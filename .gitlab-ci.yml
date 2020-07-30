@@ -8,6 +8,10 @@ job:
   script:
     - echo hello world #测试回声效果，执行效果
     - /usr/local/maven/apache-maven-3.6.3/bin/mvn -DskipTests=true package #定义maven打包当前项目文件
+    - cp target/ssm.war compose/ssm.war # target文件中的.war文件复制到compose文件中，当前文件Dockerfile的.war文件时相对路径
+    - docker-compose down # 使用runner下的docker-compose进行关闭所有环境
+    - docker-compose up -d --build # 重新构建管理的环境 --build每次都重新构建环境，肯能出现更改war或者docker-compose.yml
+    - docker rmi $(docker images -qf dangling=true) # 当第二次再次构件时，会把第一次空闲的清空
 job1:
     stage: build
     script:
