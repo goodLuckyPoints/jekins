@@ -1,7 +1,7 @@
 stages:
   - test
   - build
-#定义任务标识
+#定义任务标识1
 job:
   #stages定义阶段
   stage: test
