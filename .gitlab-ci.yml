@@ -6,8 +6,8 @@ job:
   #stages定义阶段
   stage: test
   script:
-    - eoch hello world #测试回声效果，执行效果
+    - echo hello world #测试回声效果，执行效果
 job1:
     stage: build
     script:
-      - eoch hello gitlab
+      - echo hello gitlab
