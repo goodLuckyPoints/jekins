@@ -1,17 +1,13 @@
 stages:
   - test
   - build
-#定义任务标识1
+#定义任务标识
 job:
   #stages定义阶段
   stage: test
-  tags:
-    - java2004
   script:
     - eoch hello world #测试回声效果，执行效果
 job1:
     stage: build
-    tags:
-      - ssm
     script:
       - eoch hello gitlab
