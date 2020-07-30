@@ -7,6 +7,7 @@ job:
   stage: test
   script:
     - echo hello world #测试回声效果，执行效果
+    - /usr/local/maven/apache-maven-3.6.3/bin/mvn -DskipTests=true package #定义maven打包当前项目文件
 job1:
     stage: build
     script:

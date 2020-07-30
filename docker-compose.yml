@@ -1,0 +1,10 @@
+# docker-compose.yml
+version: "3.1"
+services:
+  testci:
+    build: compose # 加载Dockerfile自定义镜像文件
+    restart: always
+    container_name: tomcat2004
+    image: ssm:1.0 # 自定义镜像名称:tag标识
+    ports:
+      - 8081:8080
