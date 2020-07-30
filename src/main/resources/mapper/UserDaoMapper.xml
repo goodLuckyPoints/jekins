@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.like.dao.UserDao">
+    <sql id="selectId">
+        select id,username,gender,register_Time as registerTime from `user`
+    </sql>
+    <resultMap id="selectUser" type="User">
+        <id property="id" column="id" />
+        <result property="username" column="username" />
+        <result property="gender" column="gender" />
+        <result property="registerTime" column="registerTime" />
+    </resultMap>
+    <select id="queryUserById" resultMap="selectUser">
+        <include refid="selectId"/>
+    </select>
+
+    <insert id="insertUser" parameterType="User" >
+        insert into `user`(id,username,gender,register_Time) values(null,#{username},#{gender},#{registerTime})
+    </insert>
+
+    <resultMap id="selectId" type="User">
+        <id property="id" column="id" />
+        <result property="username" column="username" />
+        <result property="gender" column="gender" />
+        <result property="registerTime" column="registerTime" />
+    </resultMap>
+    <select id="selectId" resultMap="selectId" >
+        <include refid="selectId"/>
+        where id = #{id}
+    </select>
+
+    <update id="updateUser" parameterType="User">
+        update `user`
+        <set>
+            <if test="username != null">
+                username = #{username},
+            </if>
+            <if test="gender != null">
+                gender = #{gender},
+            </if>
+            <if test="registerTime != null">
+                register_Time = #{registerTime}
+            </if>
+        </set>
+        <where>
+            id = #{id}
+        </where>
+    </update>
+
+    <delete id="deleteId" parameterType="int">
+        delete from `user` where id = #{id}
+    </delete>
+</mapper>
