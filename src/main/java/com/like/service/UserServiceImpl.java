@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
         PageHelper.startPage(currentPage,pageNum);
         //查询数据库进行分页处理
         List<User> users = userDao.queryUserById();
-        return new PageInfo<User>(users);
+        return new PageInfo<>(users);
     }
 
     @Override
