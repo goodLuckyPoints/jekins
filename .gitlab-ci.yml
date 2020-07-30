@@ -6,7 +6,7 @@ job:
   stage: test
   script:
     - eoch hello world #测试回声效果，执行效果
-job2:
+job1:
     stage: build
     script:
       - eoch hello gitlab
